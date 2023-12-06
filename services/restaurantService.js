@@ -20,7 +20,8 @@ export async function findById(restaurantId) {
     }
 }
 
-export async function findRestaurantsByRestaurantId() {
+//Nombre de restaurants avec restaurant_id >= 3015000
+export async function findRestaurantsGTE() {
     const restaurantIdThreshold = 3015000;
 
     try {
@@ -35,6 +36,7 @@ export async function findRestaurantsByRestaurantId() {
         throw error;
     }
 }
+
 
 export async  function  getRestoByName(name){
     try {

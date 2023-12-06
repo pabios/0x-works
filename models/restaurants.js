@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const restaurantSchema = new Schema({
-    _id: { type: Schema.Types.ObjectId, required: true },
     address: {
         building: String,
         coord: {
@@ -29,7 +28,9 @@ const restaurantSchema = new Schema({
     restaurant_id: { type: String, required: true },
 });
 
-export const RestaurantModel = model('restaurant', restaurantSchema);
+
+export const RestaurantModel = model('restaurants', restaurantSchema);
+
 
 
 
@@ -70,6 +71,6 @@ export const RestaurantModel = model('restaurant', restaurantSchema);
 //         score: 11
 //     }
 // ],
-//     name: 'The Movable Feast',
+//     name: 'isma',
 //     restaurant_id: '40361606'
 // }

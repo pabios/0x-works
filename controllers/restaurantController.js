@@ -1,5 +1,5 @@
 import {
-    findById,
+    findById, findRestaurantsGTE,
     getAllRestaurant,
     getRestoByName,
     newRestaurant, restaurantDelete,
@@ -21,17 +21,29 @@ export async function getRestaurantById(req, res) {
     return res.status(200).json(rep)
 }
 
+export async function getRestaurantByGte(req, res) {
+    let restaurantId = req.params.restaurant_id;
+    let rep = await findRestaurantsGTE(restaurantId);
+    return res.status(200).json(rep)
+}
+
+/**
+ *  {{api_url}}/restaurants/name/The Movable Feast
+ */
 export async function getRestaurantByName(req, res) {
     let name = req.params.name;
     let rep = await getRestoByName(name);
     return res.status(200).json(rep)
 }
 
+/**
+ *  {{api_url}}/restaurants/add
+ */
 export async function addRestaurant(req, res) {
     let data = req.body
     try {
-        let ajout = await newRestaurant(data);
-        return res.status(200).json("ok ajout",ajout)
+        let rep = await newRestaurant(data);
+        return res.status(200).json({"response:": rep})
     } catch (err) {
         return res.status(401).send(err.message);
     }
@@ -40,14 +52,14 @@ export async function addRestaurant(req, res) {
 
 export async function editRestaurant(req, res) {
     try {
-        let response = await updateRestaurant(req,res)
+        await updateRestaurant(req,res)
     } catch (err) {
         return res.status(500).send(err.message);
     }
 }
 export async function deleteRestaurant(req, res) {
     try {
-        let response = await restaurantDelete(req,res)
+         await restaurantDelete(req,res)
     } catch (err) {
         return res.status(500).send(err.message);
     }
