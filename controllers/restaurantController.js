@@ -22,7 +22,7 @@ export async function getRestaurantById(req, res) {
 }
 
 export async function getRestaurantByGte(req, res) {
-    let restaurantId = req.params.restaurant_id;
+    let restaurantId = req.params.restaurantId;
     let rep = await findRestaurantsGTE(restaurantId);
     return res.status(200).json(rep)
 }

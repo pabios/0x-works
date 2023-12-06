@@ -21,8 +21,8 @@ export async function findById(restaurantId) {
 }
 
 //Nombre de restaurants avec restaurant_id >= 3015000
-export async function findRestaurantsGTE() {
-    const restaurantIdThreshold = 3015000;
+export async function findRestaurantsGTE(restaurantId) {
+    const restaurantIdThreshold = restaurantId;
 
     try {
         const restaurants = await RestaurantModel.find({ restaurant_id: { $gte: restaurantIdThreshold } });
