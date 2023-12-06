@@ -1,16 +1,16 @@
 import {Router} from "express";
-import hello from "../controllers/homeController.js";
 import {
     addRestaurant, deleteRestaurant, editRestaurant, getRestaurantByGte,
     getRestaurantById,
     getRestaurantByName,
     restaurants
 } from "../controllers/restaurantController.js";
+import api from "../controllers/homeController.js";
 
 
 const router = Router();
 
-router.get("/", hello);
+router.get("/", api);
 
 // RESTAURANT
 
